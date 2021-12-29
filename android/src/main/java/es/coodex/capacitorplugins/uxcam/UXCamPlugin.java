@@ -17,7 +17,7 @@ public class UXCamPlugin extends Plugin {
 
         JSObject ret = new JSObject();
         ret.put("value", value);
-        call.success(ret);
+        call.resolve(ret);
     }
 
     @PluginMethod
@@ -32,14 +32,14 @@ public class UXCamPlugin extends Plugin {
     public void startWithKey(PluginCall call) {
         String UXCamKey = call.getString("UXCamKey");
         UXCam.startApplicationWithKeyForCordova(getActivity(), UXCamKey);
-        call.success();
+        call.resolve();
     }
 
     @PluginMethod
     public void setUserIdentity(PluginCall call) {
         String userIdentity = call.getString("userIdentity");
         UXCam.setUserIdentity(userIdentity);
-        call.success();
+        call.resolve();
     }
 
     @PluginMethod
@@ -54,14 +54,14 @@ public class UXCamPlugin extends Plugin {
             UXCam.setUserProperty(property, propertyValue);
         }
 
-        call.success();
+        call.resolve();
     }
 
     @PluginMethod
     public void setMultiSessionRecord(PluginCall call) {
         boolean enabled = call.getBoolean("recordMultipleSessions", true);
         UXCam.setMultiSessionRecord(enabled);
-        call.success();
+        call.resolve();
     }
 
     @PluginMethod
@@ -69,26 +69,26 @@ public class UXCamPlugin extends Plugin {
         JSObject ret = new JSObject();
         boolean enabled = UXCam.getMultiSessionRecord();
         ret.put("value", enabled);
-        call.success(ret);
+        call.resolve(ret);
     }
 
     @PluginMethod
     public void tagScreenName(PluginCall call) {
         String screenName = call.getString("screenName");
         UXCam.tagScreenName(screenName);
-        call.success();
+        call.resolve();
     }
 
     @PluginMethod
     public void setAutomaticScreenNameTagging(PluginCall call) {
         boolean enable = call.getBoolean("enable", true);
         UXCam.setAutomaticScreenNameTagging(enable);
-        call.success();
+        call.resolve();
     }
 
     @PluginMethod
     public void stopSession(PluginCall call) {
         UXCam.stopSessionAndUploadData();
-        call.success();
+        call.resolve();
     }
 }
