@@ -9,6 +9,8 @@ end
 
 target 'Plugin' do
   capacitor_pods
+
+  pod 'UXCam'
 end
 
 target 'PluginTests' do
